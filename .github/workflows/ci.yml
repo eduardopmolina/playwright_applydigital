@@ -50,9 +50,9 @@ jobs:
         working-directory: playwright-latam-qa
 
       - name: Run Lighthouse Accessibility Audit
-        run: node ./scripts/run-lighthouse.mjs accessibility
+        run: node ./scripts/run-lighthouse.js accessibility
         working-directory: playwright-latam-qa
 
       - name: Run Lighthouse Performance Audit
-        run: node ./scripts/run-lighthouse.mjs performance
+        run: node ./scripts/run-lighthouse.js performance
         working-directory: playwright-latam-qa
