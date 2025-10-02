@@ -27,7 +27,7 @@ jobs:
         working-directory: playwright-latam-qa
   
       - name: Run Playwright Tests
-        run: npx playwright test --workers=4
+        run: npx playwright test
         working-directory: playwright-latam-qa
   
       - name: Upload Playwright Report
