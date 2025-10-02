@@ -33,10 +33,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-      - run: cd ..
       - run: npm ci
-      - run: node ./scripts/run-lighthouse.js accessibility
-      - run: node ./scripts/run-lighthouse.js performance
+      - run: node /home/runner/work/playwright_applydigital/playwright_applydigital/scripts/run-lighthouse.js accessibility
+      - run: node /home/runner/work/playwright_applydigital/playwright_applydigital/scripts/run-lighthouse.js performance
       - name: Upload Lighthouse Reports
         if: always()
         uses: actions/upload-artifact@v4
