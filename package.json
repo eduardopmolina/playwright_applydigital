@@ -14,5 +14,8 @@
     "@playwright/test": "^1.55.1",
     "lighthouse": "^12.8.2",
     "typescript": "^5.0.0"
+  },
+  {
+  "type": "module"
   }
 }
