@@ -1,9 +1,9 @@
 const fs = require("fs");
-const lighthouse = require("lighthouse");
 const chromeLauncher = require("chrome-launcher");
 
-
 (async () => {
+  const lighthouse = (await import("lighthouse")).default; // Dynamically import ES module
+
   const category = process.argv[2] || "accessibility"; // Default to "accessibility" if no argument is given
   const url = "https://automationexercise.com/";
 
@@ -43,8 +43,3 @@ const chromeLauncher = require("chrome-launcher");
     }
   }
 })();
-
-
-
-
-
