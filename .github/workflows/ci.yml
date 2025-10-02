@@ -43,16 +43,16 @@ jobs:
           node-version: '18'
 
       - name: Install Lighthouse CI
-        run: npm install lighthouse chrome-launcher
+        run: npm install -g lighthouse
 
       - name: Install dependencies
         run: npm ci
         working-directory: playwright-latam-qa
 
       - name: Run Lighthouse Accessibility Audit
-        run: node ./scripts/run-lighthouse.js accessibility
+        run: lighthouse https://automationexercise.com  --only-categories=performance --view
         working-directory: playwright-latam-qa
 
       - name: Run Lighthouse Performance Audit
-        run: node ./scripts/run-lighthouse.js performance
+        run: lighthouse https://automationexercise.com  --only-categories=accessibility --view
         working-directory: playwright-latam-qa
