@@ -1,0 +1,18 @@
+{
+  "name": "playwright-latam-qa",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "prepublishOnly": "playwright show-report",
+    "install:all": "npm install && npx playwright install",
+    "lighthouse:accessibility": "node ./scripts/run-lighthouse.js accessibility",
+    "lighthouse:performance": "node ./scripts/run-lighthouse.js performance"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.0.0",
+    "@playwright/test": "^1.55.1",
+    "lighthouse": "^12.8.2",
+    "typescript": "^5.0.0"
+  }
+}
