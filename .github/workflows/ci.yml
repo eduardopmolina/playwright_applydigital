@@ -34,21 +34,16 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 18
-      - run: pwd
-        working-directory: playwright-latam-qa
-      - run: npm ci
-        working-directory: playwright-latam-qa
-      - run: node ./scripts/run-lighthouse.js accessibility
-        working-directory: playwright-latam-qa
-      - run: node ./scripts/run-lighthouse.js performance
-        working-directory: playwright-latam-qa
-      - name: Upload Lighthouse Reports
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: lighthouse-reports
-          path: playwright-latam-qa/reports/*.json
+          node-version: '18'
+
+      - name: Install Lighthouse CI
+        run: npm install -g @lhci/cli
+
+      - name: Run Lighthouse CI
+        run: lhci autorun --url=https://your-website-url.com
