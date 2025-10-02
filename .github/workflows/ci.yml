@@ -18,6 +18,9 @@ jobs:
           node-version: 18
           cache: 'npm'
           cache-dependency-path: playwright-latam-qa/package-lock.json
+
+      - name: Install Playwright Browsers
+        run: npx playwright install
   
       - run: npm ci
         working-directory: playwright-latam-qa
