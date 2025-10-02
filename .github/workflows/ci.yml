@@ -50,9 +50,9 @@ jobs:
         working-directory: playwright-latam-qa
 
       - name: Run Lighthouse Accessibility Audit
-        run: lighthouse https://automationexercise.com  --only-categories=performance --view
+        run: lighthouse https://automationexercise.com  --only-categories=performance --chrome-flags="--headless"
         working-directory: playwright-latam-qa
 
       - name: Run Lighthouse Performance Audit
-        run: lighthouse https://automationexercise.com  --only-categories=accessibility --view
+        run: lighthouse https://automationexercise.com  --only-categories=accessibility --chrome-flags="--headless"
         working-directory: playwright-latam-qa
