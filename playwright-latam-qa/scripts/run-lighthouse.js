@@ -1,4 +1,3 @@
-import fs from "fs";
 import lighthouse from "lighthouse";
 import chromeLauncher from "chrome-launcher";
 import chromeLauncher from "chrome-launcher";
@@ -43,4 +42,5 @@ import chromeLauncher from "chrome-launcher";
     }
   }
 })();
+
 
