@@ -12,18 +12,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+  
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-
-      - run: pwd
-        working-directory: playwright-latam-qa
+          cache: 'npm'
+          cache-dependency-path: playwright-latam-qa/package-lock.json
+  
       - run: npm ci
         working-directory: playwright-latam-qa
-      - run: npx playwright install --with-deps
+  
+      - run: npx playwright install chromium  # or only the browsers you need
         working-directory: playwright-latam-qa
-      - run: npm test
+  
+      - run: npx playwright test --workers=4  # or adjust worker count for your repo
         working-directory: playwright-latam-qa
+  
       - name: Upload Playwright Report
         if: always()
         uses: actions/upload-artifact@v4
