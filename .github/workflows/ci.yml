@@ -15,6 +15,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
+      - run: pwd
       - run: npm install
       - run: npm ci
       - run: npx playwright install --with-deps
@@ -34,6 +35,7 @@ jobs:
         with:
           node-version: 18
       - run: npm ci
+      - run: pwd
       - run: node /home/runner/work/playwright_applydigital/playwright_applydigital/scripts/run-lighthouse.js accessibility
       - run: node /home/runner/work/playwright_applydigital/playwright_applydigital/scripts/run-lighthouse.js performance
       - name: Upload Lighthouse Reports
