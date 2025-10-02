@@ -1,6 +1,7 @@
 import fs from "fs";
 import lighthouse from "lighthouse";
 import chromeLauncher from "chrome-launcher";
+import chromeLauncher from "chrome-launcher";
 
 (async () => {
   const category = process.argv[2] || "accessibility"; // Default to "accessibility" if no argument is given
@@ -42,3 +43,4 @@ import chromeLauncher from "chrome-launcher";
     }
   }
 })();
+
