@@ -15,6 +15,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
+      
       - run: pwd
       - run: npm install
       - run: npm ci
@@ -36,8 +37,10 @@ jobs:
           node-version: 18
       - run: npm ci
       - run: pwd
-      - run: node /home/runner/work/playwright_applydigital/playwright_applydigital/scripts/run-lighthouse.js accessibility
-      - run: node /home/runner/work/playwright_applydigital/playwright_applydigital/scripts/run-lighthouse.js performance
+      - run: node ./scripts/run-lighthouse.js accessibility
+      - working-directory: playwright-latam-qa
+      - run: node ./scripts/run-lighthouse.js performance
+      - working-directory: playwright-latam-qa
       - name: Upload Lighthouse Reports
         if: always()
         uses: actions/upload-artifact@v4
