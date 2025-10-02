@@ -43,7 +43,7 @@ jobs:
           node-version: '18'
 
       - name: Install Lighthouse CI
-        run: npm install -g lighthouse
+        run: npm install -g lighthouse ChromeLauncher
 
       - name: Install dependencies
         run: npm ci
