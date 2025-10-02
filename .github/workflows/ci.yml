@@ -38,9 +38,9 @@ jobs:
       - run: npm ci
       - run: pwd
       - run: node ./scripts/run-lighthouse.js accessibility
-      - working-directory: playwright-latam-qa
+        working-directory: playwright-latam-qa
       - run: node ./scripts/run-lighthouse.js performance
-      - working-directory: playwright-latam-qa
+        working-directory: playwright-latam-qa
       - name: Upload Lighthouse Reports
         if: always()
         uses: actions/upload-artifact@v4
