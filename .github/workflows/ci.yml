@@ -25,10 +25,7 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install
         
-      - name: Install required dependencies for Playwright
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libgles2-mesa libx264-160
+
     
       - run: npx playwright install chromium  # or only the browsers you need
         working-directory: playwright-latam-qa
