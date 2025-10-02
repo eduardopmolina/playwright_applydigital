@@ -6,7 +6,7 @@ const config: PlaywrightTestConfig = {
   expect: { timeout: 5000 },
   reporter: [['html', { outputFolder: 'reports/playwright-report', open: 'always' }]],
   use: {
-    headless: false,
+    headless: true,
     viewport: { width: 1280, height: 720 },
     actionTimeout: 10000,
     baseURL: 'https://automationexercise.com/',
@@ -19,3 +19,4 @@ const config: PlaywrightTestConfig = {
 };
 
 export default config;
+
