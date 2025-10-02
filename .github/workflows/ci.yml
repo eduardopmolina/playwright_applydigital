@@ -43,7 +43,7 @@ jobs:
           node-version: '18'
 
       - name: Install Lighthouse CI
-        run: npm install lighthouse
+        run: npm install lighthouse chrome-launcher
 
       - name: Install dependencies
         run: npm ci
