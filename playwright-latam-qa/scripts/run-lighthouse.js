@@ -1,6 +1,3 @@
-import lighthouse from 'lighthouse';
-import chromeLauncher from 'chrome-launcher';
-
 const lighthouse = require("lighthouse");
 const chromeLauncher = require("chrome-launcher");
 const fs = require("fs");
@@ -21,4 +18,5 @@ const fs = require("fs");
   console.log("Lighthouse scores:", result);
   await chrome.kill();
 })();
+
 
