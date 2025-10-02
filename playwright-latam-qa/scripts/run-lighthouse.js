@@ -1,3 +1,7 @@
+import playwright from 'playwright';
+import lighthouse from 'lighthouse';
+import chromeLauncher from 'chrome-launcher';
+
 const lighthouse = require("lighthouse");
 const chromeLauncher = require("chrome-launcher");
 const fs = require("fs");

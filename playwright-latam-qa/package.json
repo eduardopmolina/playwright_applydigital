@@ -6,13 +6,14 @@
     "test:headed": "playwright test --headed",
     "prepublishOnly": "playwright show-report",
     "install:all": "npm install && npx playwright install",
+    "run:lighthouse": "node ./scripts/run-lighthouse.js",
     "lighthouse:accessibility": "node ./scripts/run-lighthouse.js accessibility",
     "lighthouse:performance": "node ./scripts/run-lighthouse.js performance"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.0.0",
     "@playwright/test": "^1.55.1",
-    "lighthouse": "^12.8.2",
+    "lighthouse": "^12.x.x",
     "typescript": "^5.0.0"
   }
 }
