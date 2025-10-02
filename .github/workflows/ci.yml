@@ -42,19 +42,19 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install Lighthouse CI
+      - name: Install Lighthouse
         run: npm install -g lighthouse chrome-launcher
 
       - name: Install dependencies
         run: npm ci
         working-directory: playwright-latam-qa
 
-      - name: Run Lighthouse Accessibility Audit
-        run: lighthouse https://automationexercise.com  --only-categories=performance --ouput="json" --chrome-flags="--headless"
+      - name: Run Lighthouse Performance Audit
+        run: lighthouse https://automationexercise.com --only-categories=performance --output=json --output-path=lh-performance.json --chrome-flags="--headless"
         working-directory: playwright-latam-qa
 
-      - name: Run Lighthouse Performance Audit
-        run: lighthouse https://automationexercise.com  --only-categories=accessibility  --ouput="json" --chrome-flags="--headless"
+      - name: Run Lighthouse Accessibility Audit
+        run: lighthouse https://automationexercise.com --only-categories=accessibility --output=json --output-path=lh-accessibility.json --chrome-flags="--headless"
         working-directory: playwright-latam-qa
 
       - name: Upload Lighthouse Reports
