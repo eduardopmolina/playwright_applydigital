@@ -1,6 +1,6 @@
 (async () => {
-  const lighthouse = await import("lighthouse");
-  const chromeLauncher = require("chrome-launcher");
+  const lighthouse = await import("lighthouse");;
+  const chromeLauncher = await import("chrome-launcher");
   const fs = require("fs");
 
   const category = process.argv[2] || "accessibility";
@@ -18,3 +18,4 @@
   console.log("Lighthouse scores:", result);
   await chrome.kill();
 })();
+
