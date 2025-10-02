@@ -33,6 +33,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
+      - run: cd ..
       - run: npm ci
       - run: node ./scripts/run-lighthouse.js accessibility
       - run: node ./scripts/run-lighthouse.js performance
