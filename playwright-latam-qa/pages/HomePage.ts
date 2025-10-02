@@ -7,6 +7,6 @@ export default class HomePage extends BasePage {
   async goToProducts() {
     await this.page.click(this.productsLink);
     // cSpell:ignore networkidle
-    await this.page.waitForLoadState('networkidle');
+    //await this.page.waitForLoadState('networkidle');
   }
 }
