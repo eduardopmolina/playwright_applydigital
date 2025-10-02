@@ -1,3 +1,4 @@
+import fetch from "node-fetch";
 const fs = require("fs");
 const chromeLauncher = require("chrome-launcher");
 
@@ -43,3 +44,4 @@ const chromeLauncher = require("chrome-launcher");
     }
   }
 })();
+
