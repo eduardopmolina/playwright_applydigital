@@ -15,7 +15,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-      
+
       - run: pwd
         working-directory: playwright-latam-qa
       - run: npm ci
@@ -45,9 +45,14 @@ jobs:
       - name: Install Lighthouse CI
         run: npm install -g @lhci/cli
 
+      - name: Install dependencies
+        run: npm ci
         working-directory: playwright-latam-qa
-      - run: npm ci
+
+      - name: Run Lighthouse Accessibility Audit
+        run: node ./scripts/run-lighthouse.js accessibility
         working-directory: playwright-latam-qa
-      - run: node ./scripts/run-lighthouse.js accessibility
+
+      - name: Run Lighthouse Performance Audit
+        run: node ./scripts/run-lighthouse.js performance
         working-directory: playwright-latam-qa
-      - run: node ./scripts/run-lighthouse.js performance
