@@ -1,4 +1,5 @@
 (async () => {
+  
   const lighthouse = await import("lighthouse");;
   const chromeLauncher = await import("chrome-launcher");
   const fs = require("fs");
@@ -14,8 +15,15 @@
     performance: categories.performance.score * 100,
     seo: categories.seo.score * 100
   };
-  fs.writeFileSync(`reports/lighthouse-${category}.json`, JSON.stringify(result, null, 2));
+  try {
+  const result = await lighthouse(url, options);
+  } catch (error) {
+    console.error("Lighthouse failed:", error);
+    process.exit(1);
+  }
+  fs.writeFileSync(`./reports/lighthouse-${category}.json`, JSON.stringify(result, null, 2));
   console.log("Lighthouse scores:", result);
   await chrome.kill();
 })();
+
 
