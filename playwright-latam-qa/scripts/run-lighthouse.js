@@ -1,9 +1,8 @@
 (async () => {
   const lighthouse = await import("lighthouse");
-const chromeLauncher = require("chrome-launcher");
-const fs = require("fs");
+  const chromeLauncher = require("chrome-launcher");
+  const fs = require("fs");
 
-(async () => {
   const category = process.argv[2] || "accessibility";
   const url = "https://automationexercise.com/";
   const chrome = await chromeLauncher.launch({ chromeFlags: ["--headless"] });
@@ -19,7 +18,3 @@ const fs = require("fs");
   console.log("Lighthouse scores:", result);
   await chrome.kill();
 })();
-
-
-
-
