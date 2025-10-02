@@ -1,4 +1,6 @@
-
+const fs = require("fs");
+const lighthouse = require("lighthouse");
+const chromeLauncher = require("chrome-launcher");
 
 
 (async () => {
@@ -41,6 +43,7 @@
     }
   }
 })();
+
 
 
 
