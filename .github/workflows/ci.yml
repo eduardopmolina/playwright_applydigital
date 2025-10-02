@@ -56,3 +56,11 @@ jobs:
       - name: Run Lighthouse Performance Audit
         run: lighthouse https://automationexercise.com  --only-categories=accessibility  --ouput="json" --chrome-flags="--headless"
         working-directory: playwright-latam-qa
+
+      - name: Upload Lighthouse Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: |
+            playwright-latam-qa/lh-performance.json
+            playwright-latam-qa/lh-accessibility.json
