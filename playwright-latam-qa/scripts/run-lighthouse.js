@@ -1,4 +1,3 @@
-import playwright from 'playwright';
 import lighthouse from 'lighthouse';
 import chromeLauncher from 'chrome-launcher';
 
@@ -22,3 +21,4 @@ const fs = require("fs");
   console.log("Lighthouse scores:", result);
   await chrome.kill();
 })();
+
