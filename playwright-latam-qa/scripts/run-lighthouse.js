@@ -1,5 +1,4 @@
-import lighthouse from "lighthouse";
-import chromeLauncher from "chrome-launcher";
+
 import chromeLauncher from "chrome-launcher";
 
 (async () => {
@@ -42,5 +41,6 @@ import chromeLauncher from "chrome-launcher";
     }
   }
 })();
+
 
 
