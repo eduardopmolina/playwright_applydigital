@@ -45,5 +45,9 @@ jobs:
       - name: Install Lighthouse CI
         run: npm install -g @lhci/cli
 
-      - name: Run Lighthouse CI
-        run: lhci autorun --url=https://your-website-url.com
+        working-directory: playwright-latam-qa
+      - run: npm ci
+        working-directory: playwright-latam-qa
+      - run: node ./scripts/run-lighthouse.js accessibility
+        working-directory: playwright-latam-qa
+      - run: node ./scripts/run-lighthouse.js performance
