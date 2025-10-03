@@ -120,14 +120,12 @@ How to run (commands)
   Clone repo
   
   Install:
-    npm install  
-    Install Playwright browsers:
-    npx playwright install
-  
+  Install Playwright browsers:
   Run tests (both projects defined in config will run: desktop + mobile):
+
+    npx playwright install
+    npm install
     npm test
-    See report:
-  
     npm run test:report
     # or npx playwright show-report
   
