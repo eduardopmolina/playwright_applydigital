@@ -13,7 +13,7 @@ performance testing using Lighthouse or similar.
 The website
 https://automationexercise.com/
 
-B. User flow
+B. User flow (Project: LATAM QA Interview — Web Automation (Playwright + TypeScript (both web & mobile) + Faker + Lighthouse + GitHubActions CI (DEV & PROd Branches) + GIT REPO + Proposed e2e CI/CD)
 1. Navigate to the website.
 2. Go to the Products section.
 3. Choose the third product shown in the product list and view its details.
@@ -32,11 +32,49 @@ Task and Deliverables
 ● Provide a brief justification for your choice, highlighting factors like ease of use,
 community support, and testing features.
 
+  Why Playwright?
+  - Cross-browser automation out of the box (Chromium, Firefox, WebKit).
+  - Mobile emulation via device descriptors (so single test can run Desktop + Mobile).
+  - First-class test runner with test.describe/test fixtures, powerful retries, built-in HTML reporter (no extra config).
+  - Good for POM & modular architecture and easy to run parallel tests.
+  - Strong community & good docs for modern web apps and CI integration.
+  - Works well with TypeScript for code quality and maintainability.
+  - Playwright fits the "adaptive to Desktop & Mobile viewport" requirement very naturally.
+
 2. Test Case Design
 ● Write a brief test case document that outlines the user flow steps. Include:
 ○ Preconditions
 ○ Test Steps
 ○ Expected Results
+
+  Test Name: Add third product to cart and proceed to checkout (Desktop + Mobile)
+
+  Preconditions
+  
+  - Browser installed by Playwright (node >= 16).
+  - Network access to https://automationexercise.com/
+  - Project dependencies installed (npm install).
+  - Playwright browsers installed (npx playwright install).
+
+  Test Steps
+  
+  - Open browser to https://automationexercise.com/.
+  - Click Products link in nav.
+  - On Products list, locate the 3rd product in the listing and click its View Product or product image to open product details.
+  - Generate a random quantity (integer between 1 and 20).
+  - Set product quantity to generated value.
+  - Click Add to cart.
+  - Click Proceed to Checkout or view cart and proceed.
+  - Verify the Register / Login modal is visible (final mandatory step).
+  - (Optional) Register new user using Faker-generated data, then confirm cart flow.
+
+  Expected Results
+  - Products page opens successfully.
+  - 3rd product details page opens and loads with relevant elements (name, price, description).
+  - Quantity is set to the generated value.
+  - Product is added to cart and cart contains the product with correct quantity and price calculation.
+  - Proceed to checkout shows Register / Login modal (mandatory).
+  - Optional flow: user can register and then place an order (if performing optional steps).
 
 3. Automation Test Script Development 
 ● Develop a script to automate the given user flow using the selected framework.
@@ -44,37 +82,73 @@ community support, and testing features.
 ● Add comments within the code for clarity.
 ● Use of known Design Patterns such as POM.
 
-4. Optional Tasks
+  Note ive worked with a few web automation apps, OOP and can show quick and easy or a bit more reusable and into more of a POM model. All shown in the code.
+
+5. Optional Tasks
 ● Accessibility Testing: Use Lighthouse or similar to check the accessibility score of the
 home screen.
 ● Performance Testing: Use Lighthouse or similar to measure the performance score of
 the home screen.
 
-5. Execution
+  Ive created a script and also generate full Lighthouse Accessibility and Performance testing while i run my scripts in parallel. This should be CI'd and enhanced. Ran out of time to include some   cooler things. Net net I gernerate the json reports for viewing the Lighthouse reports :).
+
+7. Execution
 ● Execute the test case demonstrating the automatioñ
 
-6. Analysis and Test Report
+  I can show both via VScosed, CLI or via the pipelines ive created (dev/prod branches). I know reality we would have more. If I can go through this fun would be great!
+
+9. Analysis and Test Report
 ● Prepare a brief report summarizing:
+
+  - Playwright provides an HTML report. After running tests:
+  - npx playwright test (run tests)
+  - npx playwright show-report (open HTML report)
+
+The report will be generated at reports/playwright-report. For CI, save the folder.
 ○ The status of test execution (pass/fail).
-○ Any issues or failures encountered.
+○ Any issues or failures encountered. I do see a few issues reported by light house. In general the app reacts well. Ive seen it all.
 ○ Lighthouse scores for accessibility or performance (if these optional tasks were
 completed).
 
-7. Documentation and Submission
-● Submit a link to the repository that includes:
-○ Test case document.
-○ Source code of the automation script.
+11. Documentation and Submission
+● Submit a link to the repository that includes: This is the link to GIt repo.
+○ Test case document. Above. Generally Im used to uploading to a Test and DEfect mgmt tool. Corrisponding docs coud also include startegy docs, test suites, coveerage etc...
+○ Source code of the automation script. In this repo.
 ○ Instructions for running the test.
+How to run (commands)
+
+  Clone repo
+  
+  Install:
+    npm install  
+    Install Playwright browsers:
+    npx playwright install
+  
+  Run tests (both projects defined in config will run: desktop + mobile):
+    npm test
+    See report:
+  
+    npm run test:report
+    # or npx playwright show-report
+  
+    Run Lighthouse checks:
+  
+    npm run lighthouse:accessibility
+    npm run lighthouse:performance
+    results in reports/lighthouse-*.json
+
 ○ Test reporting, include a test report using tools such as mochawesome.
 
-Evaluation Criteria
-● Understanding of Automation Tools: Proper usage and implementation of Cypress or
-Playwright.
-● Data Management: Effective use of libraries for generating random user data, data file
-segmentation.
-● Code Quality: Maintainable, readable, and well-documented code.
-● Responsiveness: The test case submitted works on Mobile and Desktop viewports.
-● Execution and Reporting: Ability to execute tests, handle failures, and clearly report
-results.
-● Optional Evaluation: Consideration and implementation of accessibility and
-performance testing using Lighthouse.
+  Ive published them as artifacts within github after pipeline runs. This for both Playwright and Lighthouse.
+
+  Evaluation Criteria
+  ● Understanding of Automation Tools: Proper usage and implementation of Cypress or
+  Playwright.
+  ● Data Management: Effective use of libraries for generating random user data, data file
+  segmentation.
+  ● Code Quality: Maintainable, readable, and well-documented code.
+  ● Responsiveness: The test case submitted works on Mobile and Desktop viewports.
+  ● Execution and Reporting: Ability to execute tests, handle failures, and clearly report
+  results.
+  ● Optional Evaluation: Consideration and implementation of accessibility and
+  performance testing using Lighthouse.
