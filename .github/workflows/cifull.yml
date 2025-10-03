@@ -19,7 +19,6 @@ jobs:
         - name: Install dependencies
           run: npm ci
           working-directory: playwright-latam-qa
-        - name: Run Dev 
         
     # Quality Center Stage
     quality_center:
