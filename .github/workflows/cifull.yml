@@ -1,0 +1,122 @@
+# ---------- GitHub Actions Workflow ----------
+name: Full Piepline
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+    # Dev Stage
+    dev:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-node@v4
+          with:
+            node-version: 18
+        - name: Install dependencies
+          run: npm ci
+          working-directory: playwright-latam-qa
+        - name: Run Dev Tests
+          run: npm run test:dev
+          working-directory: playwright-latam-qa
+  
+    # Quality Center Stage
+    quality_center:
+      needs: dev
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-node@v4
+          with:
+            node-version: 18
+        - name: Install dependencies
+          run: npm ci
+          working-directory: playwright-latam-qa
+        - name: Run Quality Center Tests
+          run: npm run test:quality
+          working-directory: playwright-latam-qa
+  
+    # Smoke Tests
+    smoke_tests:
+      needs: quality_center
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-node@v4
+          with:
+            node-version: 18
+        - name: Install dependencies
+          run: npm ci
+          working-directory: playwright-latam-qa
+        - name: Run Smoke Tests
+          run: npm run test:smoke
+          working-directory: playwright-latam-qa
+  
+    # API Tests
+    api_tests:
+      needs: smoke_tests
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-node@v4
+          with:
+            node-version: 18
+        - name: Install dependencies
+          run: npm ci
+          working-directory: playwright-latam-qa
+        - name: Run API Tests
+          run: npm run test:api
+          working-directory: playwright-latam-qa
+  
+    # End-to-End (E2E) Tests
+    e2e_tests:
+      needs: api_tests
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-node@v4
+          with:
+            node-version: 18
+        - name: Install dependencies
+          run: npm ci
+          working-directory: playwright-latam-qa
+        - name: Run E2E Tests
+          run: npm run test:e2e
+          working-directory: playwright-latam-qa
+  
+    # Full Regression Tests
+    full_regression:
+      needs: e2e_tests
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-node@v4
+          with:
+            node-version: 18
+        - name: Install dependencies
+          run: npm ci
+          working-directory: playwright-latam-qa
+        - name: Run Full Regression Tests
+          run: npm run test:regression
+          working-directory: playwright-latam-qa
+  
+    # Pre-Deployment Stage
+    pre_deployment:
+      needs: full_regression
+      runs-on: ubuntu-latest
+      steps:
+        - name: Pre-Deployment Steps
+          run: echo "Running pre-deployment steps..."
+        - name: Verify Artifacts
+          run: echo "Verifying build artifacts..."
+  
+    # Deployment Stage
+    deployment:
+      needs: pre_deployment
+      runs-on: ubuntu-latest
+      steps:
+        - name: Deployment Steps
+          run: echo "Deploying application to production..."
