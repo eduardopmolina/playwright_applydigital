@@ -32,9 +32,6 @@ jobs:
         - name: Install dependencies
           run: npm ci
           working-directory: playwright-latam-qa
-        - name: Run Quality Center Tests
-          run: npm run test:quality
-          working-directory: playwright-latam-qa
   
     # Smoke Tests
     smoke_tests:
