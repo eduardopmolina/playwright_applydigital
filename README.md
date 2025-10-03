@@ -139,6 +139,31 @@ How to run (commands)
 
   Ive published them as artifacts within github after pipeline runs. This for both Playwright and Lighthouse.
 
+
+  General Project Structure in case helps 
+  
+  playwright-latam-qa/
+  ├─ package.json
+  ├─ playwright.config.ts
+  ├─ tsconfig.json
+  ├─ .github/workflows/ci.yml (Note I have a e2e CI/CD one i can also go through)   
+  ├─ README.md
+  ├─ tests/
+  │  └─ product.spec.ts
+  ├─ pages/
+  │  ├─ BasePage.ts
+  │  ├─ HomePage.ts
+  │  ├─ ProductsPage.ts
+  │  ├─ ProductDetailsPage.ts
+  │  └─ CartPage.ts
+  ├─ utils/
+  │  └─ random.ts
+  └─ reports/
+  Lighthouse - script (can be used aoptionally)
+
+
+
+
   Evaluation Criteria
   ● Understanding of Automation Tools: Proper usage and implementation of Cypress or
   Playwright.
