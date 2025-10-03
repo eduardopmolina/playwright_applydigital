@@ -142,25 +142,31 @@ How to run (commands)
 
   General Project Structure in case helps 
   
-playwright-latam-qa/
-├─ package.json
-├─ playwright.config.ts
-├─ tsconfig.json
-├─ .github/workflows/ci.yml   (optional CI)
-├─ README.md
-├─ tests/
-│  └─ product.spec.ts
-├─ pages/
-│  ├─ BasePage.ts
-│  ├─ HomePage.ts
-│  ├─ ProductsPage.ts
-│  ├─ ProductDetailsPage.ts
-│  └─ CartPage.ts
-├─ utils/
-│  └─ random.ts
-└─ reports/
-
-
+  playwright-latam-qa/
+  
+  ├─ package.json
+  
+  ├─ playwright.config.ts
+  
+  ├─ tsconfig.json
+  
+  ├─ .github/workflows/ci.yml
+  
+  ├─ README.md
+  
+  ├─ tests/
+  │  └─ product.spec.ts
+  
+  ├─ pages/
+  │  ├─ BasePage.ts
+  │  ├─ HomePage.ts
+  │  ├─ ProductsPage.ts
+  │  ├─ ProductDetailsPage.ts
+  │  └─ CartPage.ts
+  
+  ├─ utils/
+  │  └─ random.ts
+  └─ reports/
 
 
   Evaluation Criteria
