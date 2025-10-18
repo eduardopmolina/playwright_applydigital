@@ -1,6 +1,7 @@
 {
   "name": "playwright-latam-qa",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "test": "playwright test",
     "test:headed": "playwright test --headed",
@@ -11,11 +12,9 @@
     "lighthouse:performance": "node ./scripts/run-lighthouse.js performance"
   },
   "devDependencies": {
-    "@faker-js/faker": "^8.0.0",
+    "@faker-js/faker": "^8.4.1",
     "@playwright/test": "^1.55.1",
     "lighthouse": "^12.x.x",
     "typescript": "^5.0.0"
   }
 }
-
-

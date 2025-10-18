@@ -22,5 +22,4 @@ async proceedToCheckout() {
 
 
 }
-
 }
