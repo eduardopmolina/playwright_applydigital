@@ -11,7 +11,7 @@ const config: PlaywrightTestConfig = {
     actionTimeout: 10 * 1000,
     baseURL: 'https://automationexercise.com',
     ignoreHTTPSErrors: true,
-    trace: 'on',
+    trace: 'off',
     // Optionally, also enable video recording
     video: 'on-first-retry',
   },
@@ -35,4 +35,5 @@ const config: PlaywrightTestConfig = {
 };
 
 export default config;
+
 export { config };
