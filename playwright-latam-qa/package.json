@@ -5,6 +5,9 @@
   "scripts": {
     "test": "playwright test",
     "test:headed": "playwright test --headed",
+    "test:bdd": "playwright test bdd-example.spec.ts --headed",
+    "test:signup": "playwright test complete-signup.spec.ts --headed --timeout=60000",
+    "test:signup-debug": "playwright test complete-signup.spec.ts --headed --debug --timeout=60000",
     "prepublishOnly": "playwright show-report",
     "install:all": "npm install && npx playwright install",
     "run:lighthouse": "node ./scripts/run-lighthouse.js",

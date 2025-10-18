@@ -409,3 +409,5 @@ npx playwright test main-page-display.spec.ts --reporter=html
 - [Page Object Model Implementation](../playwright-latam-qa/pages/)
 - [Test Configuration](../playwright-latam-qa/playwright.config.ts)
 - [API Testing Guide](./api-testing-guide.md)
+- [UI Testing & UX Guide](./ui-testing-guide.md)
+- [Test Documentation Index](./test-documentation-index.md)
