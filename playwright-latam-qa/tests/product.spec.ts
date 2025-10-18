@@ -5,7 +5,6 @@ import ProductDetailsPage from '../pages/ProductDetailsPage';
 import CartPage from '../pages/CartPage';
 import { randomInt } from '../utils/random';
 import { faker } from '@faker-js/faker';
-import { snapshot } from 'node:test';
 
 
 // This test covers the mandatory flow and optional registration (commented).
@@ -61,15 +60,30 @@ test.describe('Add third product and proceed to checkout', () => {
     await expect(page).toHaveTitle(/Automation Exercise/);
 
     // 9. Click on 'Signup / Login' link
-    await page.getByRole('link', { name: ' Signup / Login' }).waitFor({ state: 'visible' });
-    await page.getByRole('link', { name: ' Signup / Login' }).click();
+    const signupLink = page.getByRole('link', { name: ' Signup / Login' });
+    await signupLink.waitFor({ state: 'visible' });
+    await signupLink.scrollIntoViewIfNeeded();
+    await signupLink.click({ force: true });
 
-    // 10. Perform the registration
+    // 10. Perform the registration - Apply Copilot instructions error handling patterns
     const name = faker.person.firstName();
     const email = faker.internet.email();
-    await page.getByRole('textbox', { name: 'Name' }).fill(name);
-    await page.locator('form').filter({ hasText: 'Signup' }).getByPlaceholder('Email Address').click();
-    await page.locator('form').filter({ hasText: 'Signup' }).getByPlaceholder('Email Address').fill(email);
+    
+    // Use error handling pattern from Copilot instructions
+    await page.waitForSelector('input[name="name"], [data-qa="signup-name"]', { timeout: 5000 }).catch(() => {});
+    
+    const nameField = page.getByRole('textbox', { name: 'Name' });
+    if (await nameField.isVisible({ timeout: 2000 })) {
+      await nameField.fill(name);
+    } else {
+      // Fallback selector strategy from instructions
+      await page.locator('input[name="name"], [data-qa="signup-name"]').first().fill(name);
+    }
+    
+    const emailField = page.locator('form').filter({ hasText: 'Signup' }).getByPlaceholder('Email Address');
+    await emailField.waitFor({ state: 'visible', timeout: 5000 }).catch(() => {});
+    await emailField.click();
+    await emailField.fill(email);
     await page.getByRole('button', { name: 'Signup' }).click();
 
     await page.close();

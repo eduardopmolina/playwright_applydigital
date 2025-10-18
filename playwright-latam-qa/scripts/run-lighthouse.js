@@ -1,9 +1,9 @@
 // scripts/run-lighthouse.js
-const lighthouse = require('lighthouse');
-const chromeLauncher = require('chrome-launcher');
-const fs = require('fs');
+import lighthouse from 'lighthouse';
+import * as chromeLauncher from 'chrome-launcher';
+import { writeFileSync } from 'node:fs';
 
-(async () => {
+// Use top-level await as per linting suggestions
   const category = process.argv[2] || 'accessibility'; // or 'performance'
   const url = 'https://automationexercise.com/';
 
@@ -18,8 +18,7 @@ const fs = require('fs');
     seo: categories.seo.score * 100
   };
 
-  fs.writeFileSync(`reports/lighthouse-${category}.json`, JSON.stringify(result, null, 2));
+  writeFileSync(`reports/lighthouse-${category}.json`, JSON.stringify(result, null, 2));
   console.log('Lighthouse scores:', result);
 
   await chrome.kill();
-})();

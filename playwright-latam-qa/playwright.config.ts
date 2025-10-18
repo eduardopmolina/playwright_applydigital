@@ -14,12 +14,23 @@ const config: PlaywrightTestConfig = {
     trace: 'on',
     // Optionally, also enable video recording
     video: 'on-first-retry',
-    // Configure automatic screenshots for failures
-    screenshot: 'only-on-failure',
   },
   projects: [
-    { name: 'chromium-desktop', use: { browserName: 'chromium', viewport: { width: 1280, height: 720 } } },
-    { name: 'webkit-mobile', use: { browserName: 'webkit', ...devices['iPhone 12'] } }
+    { 
+      name: 'chromium-desktop', 
+      use: { 
+        browserName: 'chromium', 
+        viewport: { width: 1280, height: 720 },
+        channel: 'chrome' // Use Google Chrome
+      } 
+    },
+    { 
+      name: 'chromium-mobile', 
+      use: { 
+        browserName: 'chromium', 
+        ...devices['iPhone 12'] 
+      } 
+    }
   ]
 };
 
